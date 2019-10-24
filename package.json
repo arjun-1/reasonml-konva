@@ -1,0 +1,38 @@
+{
+  "name": "reason-react",
+  "version": "0.1.0",
+  "scripts": {
+    "build": "bsb -make-world",
+    "start": "bsb -make-world -w -ws _ ",
+    "clean": "bsb -clean-world",
+    "webpack": "webpack -w",
+    "webpack:production": "NODE_ENV=production webpack",
+    "server": "webpack-dev-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "BuckleScript",
+    "ReasonReact",
+    "reason-react"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "bs-abstract": "^0.17.0",
+    "bs-webapi": "^0.15.5",
+    "konva": "^4.0.16",
+    "paper": "^0.12.3",
+    "react": "^16.11.0",
+    "react-dom": "^16.8.1",
+    "react-konva": "^16.10.1-0",
+    "reason-react": ">=0.7.0",
+    "relude": "^0.30.0"
+  },
+  "devDependencies": {
+    "bs-platform": "^5.2.1",
+    "html-webpack-plugin": "^3.2.0",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.9",
+    "webpack-dev-server": "^3.9.0"
+  }
+}
