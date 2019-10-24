@@ -44,28 +44,14 @@ module Circle = {
 
 [@react.component]
 let make = (~initialPoints) => {
-  let (state, dispatch) =
-    React.useReducer(bezierCurveReducer, initialPoints);
+  let (state, dispatch) = React.useReducer(bezierCurveReducer, initialPoints);
   <>
-    <Konva.Line
-      points=state->bezierCurveArray
-      stroke="green"
-      strokeWidth=0.3
-      bezier=true
-    />
+    <Konva.Line points=state->bezierCurveArray stroke="green" strokeWidth=0.3 bezier=true />
     <Circle update={p => MoveP1(p)} point={state.p1} dispatch />
     <Circle update={p => MoveP2(p)} point={state.p2} dispatch />
     <Circle update={p => MoveP3(p)} point={state.p3} dispatch />
     <Circle update={p => MoveP4(p)} point={state.p4} dispatch />
-    <Konva.Line
-      points={twoPointArray(state.p1, state.p2)}
-      stroke="red"
-      strokeWidth=0.3
-    />
-    <Konva.Line
-      points={twoPointArray(state.p3, state.p4)}
-      stroke="red"
-      strokeWidth=0.3
-    />
+    <Konva.Line points={twoPointArray(state.p1, state.p2)} stroke="red" strokeWidth=0.3 />
+    <Konva.Line points={twoPointArray(state.p3, state.p4)} stroke="red" strokeWidth=0.3 />
   </>;
 };

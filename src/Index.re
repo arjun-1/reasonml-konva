@@ -1,12 +1,14 @@
 module Layer {
+  open Webapi.Dom.Window
+  let window = Webapi.Dom.window
   type size = {
     width: int,
     height: int
   }
 
   let sizeInitial = {
-    width: Webapi.Dom.Window.innerWidth(Webapi.Dom.window),
-    height: Webapi.Dom.Window.innerHeight(Webapi.Dom.window)
+    width: window->innerWidth,
+    height: window->innerHeight
   }
 
   type sizeAction =
@@ -23,20 +25,20 @@ module Layer {
     let (stateSize, dispatchSize) = React.useReducer(sizeReducer, sizeInitial);
 
     let onResize = _ => {
-      Webapi.Dom.window
-        ->Webapi.Dom.Window.innerWidth
+      window
+        ->innerWidth
         ->SetWidth
         ->dispatchSize
       
-      Webapi.Dom.window
-        ->Webapi.Dom.Window.innerHeight
+      window
+        ->innerHeight
         ->SetHeight
         ->dispatchSize
     };
 
     React.useEffect0(() => {
-      Webapi.Dom.Window.addEventListener("resize", onResize, Webapi.Dom.window);
-      Some(() => Webapi.Dom.Window.removeEventListener("resize", onResize, Webapi.Dom.window));
+      window |> addEventListener("resize", onResize);
+      Some(() => window |> removeEventListener("resize", onResize));
     });
 
     <Konva.Stage width={stateSize.width} height={stateSize.height}>
@@ -56,7 +58,7 @@ let randomInitialPoints = () => Bezier.{
   p4: randomPoint(),
 }
 
-let nrOfCurves = 1000
+let nrOfCurves = 200
 let curves = nrOfCurves
   -> Relude.Array.makeWithIndex(_ => randomInitialPoints())
   |>Array.map(initialPoints => <Bezier initialPoints />)

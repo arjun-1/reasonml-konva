@@ -14,8 +14,7 @@ module Line = {
 
 module Stage = {
   [@bs.module "react-konva"] [@react.component]
-  external make:
-    (~width: int, ~height: int, ~children: React.element=?) => React.element =
+  external make: (~width: int, ~height: int, ~children: React.element=?) => React.element =
     "Stage";
 };
 
@@ -27,14 +26,7 @@ module Layer = {
 module Rect = {
   [@bs.module "react-konva"] [@react.component]
   external make:
-    (
-      ~x: float,
-      ~y: float,
-      ~width: float,
-      ~height: float,
-      ~fill: string=?,
-      ~shadowBlur: float=?
-    ) =>
+    (~x: float, ~y: float, ~width: float, ~height: float, ~fill: string=?, ~shadowBlur: float=?) =>
     React.element =
     "Rect";
 };
