@@ -37,8 +37,8 @@ module Layer {
     };
 
     React.useEffect0(() => {
-      window |> addEventListener("resize", onResize);
-      Some(() => window |> removeEventListener("resize", onResize));
+      window|>addEventListener("resize", onResize);
+      Some(() => window|>removeEventListener("resize", onResize));
     });
 
     <Konva.Stage width={stateSize.width} height={stateSize.height}>
